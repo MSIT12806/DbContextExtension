@@ -5,20 +5,7 @@ using System.Collections.Concurrent;
 using System.Linq.Expressions;
 namespace DbContextExtension
 {
-    public interface HasId
-    {
-        string Id { get; set; }
-    }
 
-    public class DbSetEntity<TEntity> : DbSetUnikey<TEntity> where TEntity : class, HasId
-    {
-        private readonly DbSet<TEntity> _dbSet;
-
-        public DbSetEntity(DbSet<TEntity> dbSet) : base(dbSet, x => y => x.Id == y.Id)
-        {
-            this._dbSet = dbSet;
-        }
-    }
     public class DbSetUnikey<TEntity> : DbSet<TEntity> where TEntity : class
     {
         private readonly DbSet<TEntity> _dbSet;
